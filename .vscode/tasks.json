@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Backend",
+      "type": "shell",
+      "command": "cd aegis-gpt/backend/src ; uvicorn main:app --reload --port 8000",
+      "isBackground": true,
+      "presentation": {
+        "group": "aegis",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Start Frontend",
+      "type": "shell",
+      "command": "cd aegis-gpt/frontend ; pnpm.cmd dev",
+      "isBackground": true,
+      "presentation": {
+        "group": "aegis",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Start Fullstack App",
+      "dependsOn": ["Start Backend", "Start Frontend"],
+      "dependsOrder": "parallel",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
